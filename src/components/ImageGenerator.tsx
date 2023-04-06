@@ -1,5 +1,6 @@
 import styles from "../styles/imageGenerator.module.scss";
 import {ChangeEvent, FormEvent, useState} from "react";
+import ImageSet from "./ImageSet";
 
 export default function ImageGenerator(){
     const [imgCode, setImgCode] = useState("oi");
@@ -79,40 +80,15 @@ export default function ImageGenerator(){
         <div className={styles.container}>
             <h1 className={styles.title}>퍼플리아 이미지 코드 대량 제작</h1>
             <form className={styles.form} onSubmit={generateCode}>
-                <div className={styles.formFields}>
-                    <div className={styles.imgInfo} >
-                        <div className={styles.date}>
-                            <label>Date</label>
-                            <input type="text" onChange={(event: ChangeEvent<HTMLInputElement>) => setDate(event.target.value)} />
-                        </div>
-                        <div className={styles.productNo}>
-                            <label>Product No.</label>
-                            <input type="text" onChange={(event: ChangeEvent<HTMLInputElement>) => setProductNo(event.target.value)} />
-                        </div>
-                        <div className={styles.item}>
-                            <label>Item</label>
-                            <input type="text" onChange={(event: ChangeEvent<HTMLInputElement>) => setItem(event.target.value)} />
-                        </div>
-                        <div className={styles.imageNo}>
-                            <label>Image No.</label>
-                            <section>
-                                <input type="text" onChange={(event: ChangeEvent<HTMLInputElement>) => setImgNo1(event.target.value)} />
-                                <span> ~ </span>
-                                <input type="text" onChange={(event: ChangeEvent<HTMLInputElement>) => setImgNo2(event.target.value)} />
-                            </section>
-                        </div>
-                        <div className={styles.productName}>
-                            <label>Product Name</label>
-                            <input type="text" onChange={(event: ChangeEvent<HTMLInputElement>) => setProductName(event.target.value)} />
-                        </div>
-                    </div>
-                    <div className={styles.endpointInfo}>
-                        <div className={styles.endpoint}>
-                            <label>Endpoint</label>
-                            <input type="text" onChange={(event: ChangeEvent<HTMLInputElement>) => setEndpoint(event.target.value)} />
-                        </div>
-                    </div>
-                </div>
+                <ImageSet 
+                    onDate={(event: ChangeEvent<HTMLInputElement>) => setDate(event.target.value)}
+                    onProdNo={(event: ChangeEvent<HTMLInputElement>) => setProductNo(event.target.value)}
+                    onItem={(event: ChangeEvent<HTMLInputElement>) => setItem(event.target.value)}
+                    onImg1={(event: ChangeEvent<HTMLInputElement>) => setImgNo1(event.target.value)}
+                    onImg2={(event: ChangeEvent<HTMLInputElement>) => setImgNo2(event.target.value)}
+                    onProdName={(event: ChangeEvent<HTMLInputElement>) => setProductName(event.target.value)}
+                    onEndpoint={(event: ChangeEvent<HTMLInputElement>) => setEndpoint(event.target.value)}
+                />
                 <button type="submit">Generate</button>
             </form>
             <div className={styles.result}>

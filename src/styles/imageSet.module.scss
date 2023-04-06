@@ -1,0 +1,57 @@
+
+.formFields{
+    label{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        margin-right: 8px;
+    }
+
+    input{
+        height: 1.25rem;
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: 2px;
+        //-webkit-background-clip: padding-box; /* for Safari */
+        //background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+    }
+}
+
+
+.imgInfo, .endpointInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    width: 100%;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+    }
+}
+
+.date, .imageNo{
+    input{
+        width: 50px;
+    }
+}
+
+.productNo, .item{
+    input{
+        width: 100px;
+    }
+} 
+
+.productName input{
+    width: 200px;
+}
+
+.imageNo div{
+    display: block;
+}
+
+.endpoint input{
+    width: 675px;
+}
