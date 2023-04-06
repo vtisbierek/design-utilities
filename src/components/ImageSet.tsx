@@ -8,41 +8,42 @@ interface SetProps{
     onImg2: any;
     onProdName: any;
     onEndpoint: any;
+    elementId: string;
 }
 
-export default function ImageSet({onDate, onProdNo, onItem, onImg1, onImg2, onProdName, onEndpoint}: SetProps){
+export default function ImageSet({onDate, onProdNo, onItem, onImg1, onImg2, onProdName, onEndpoint, elementId}: SetProps){
     return (
         <div className={styles.formFields}>
             <div className={styles.imgInfo} >
                 <div className={styles.date}>
                     <label>Date</label>
-                    <input type="text" onChange={onDate} />
+                    <input type="text" data-id={elementId} onChange={onDate} />
                 </div>
                 <div className={styles.productNo}>
                     <label>Product No.</label>
-                    <input type="text" onChange={onProdNo} />
+                    <input type="text" data-id={elementId} onChange={onProdNo} />
                 </div>
                 <div className={styles.item}>
                     <label>Item</label>
-                    <input type="text" onChange={onItem} />
+                    <input type="text" data-id={elementId} onChange={onItem} />
                 </div>
                 <div className={styles.imageNo}>
                     <label>Image No.</label>
                     <section>
-                        <input type="text" onChange={onImg1} />
+                        <input type="text" data-id={elementId} onChange={onImg1} />
                         <span> ~ </span>
-                        <input type="text" onChange={onImg2} />
+                        <input type="text" data-id={elementId} onChange={onImg2} />
                     </section>
                 </div>
                 <div className={styles.productName}>
                     <label>Product Name</label>
-                    <input type="text" onChange={onProdName} />
+                    <input type="text" data-id={elementId} onChange={onProdName} />
                 </div>
             </div>
             <div className={styles.endpointInfo}>
                 <div className={styles.endpoint}>
                     <label>Endpoint</label>
-                    <input type="text" onChange={onEndpoint} />
+                    <input type="text" data-id={elementId} onChange={onEndpoint} />
                 </div>
             </div>
         </div>
