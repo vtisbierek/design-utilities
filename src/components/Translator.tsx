@@ -10,8 +10,8 @@ export default function Translator(){
 
 
     async function translateKo(){
-        const papagoUri = process.env.BASE_URI + "/api/papago";
-        const googleUri = process.env.BASE_URI + "/api/googleTranslate";
+        const papagoUri = process.env.NEXT_PUBLIC_BASE_URI + "/api/papago";
+        const googleUri = process.env.NEXT_PUBLIC_BASE_URI + "/api/googleTranslate";
 
         const [responseKoEn, responseKoPt] = await Promise.all([ 
             await axios.post(papagoUri, {
@@ -29,8 +29,8 @@ export default function Translator(){
     }
 
     async function translateEn(){
-        const papagoUri = process.env.BASE_URI + "/api/papago";
-        const googleUri = process.env.BASE_URI + "/api/googleTranslate";
+        const papagoUri = process.env.NEXT_PUBLIC_BASE_URI + "/api/papago";
+        const googleUri = process.env.NEXT_PUBLIC_BASE_URI + "/api/googleTranslate";
 
         const [responseEnKo, responseEnPt] = await Promise.all([ 
             await axios.post(papagoUri, {
@@ -48,7 +48,7 @@ export default function Translator(){
     }
 
     async function translatePt(){
-        const googleUri = process.env.BASE_URI + "/api/googleTranslate";
+        const googleUri = process.env.NEXT_PUBLIC_BASE_URI + "/api/googleTranslate";
 
         const [responsePtKo, responsePtEn] = await Promise.all([ 
             await axios.post(googleUri, {
