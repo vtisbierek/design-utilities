@@ -1,0 +1,58 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.textAreaSection{
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        width: 33%;
+    }
+
+    textarea{
+        resize: none;
+        outline: none;
+        height: 200px;
+        border: 1px solid rgba(0, 0, 0, .4);
+        border-radius: 8px;
+        padding: 8px;
+        white-space: pre-wrap;
+    }
+
+    button{
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, .4);
+        border-radius: 4px;
+        transition: all 0.5s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg{
+            width: 40px;
+        }
+    }
+}
+
+.btnBr:hover{
+    background-color: yellow;
+}
+
+.btnKr:hover{
+    background-color: rgb(190, 48, 48);
+}
+
+.btnUs:hover{
+    background-color: rgb(17, 67, 160);
+}

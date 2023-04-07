@@ -4,8 +4,10 @@ const translate = require('translate-google');
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse){
-    const toBeTranslated = req.body.text;
-    const translation = await translate(toBeTranslated, {from: "auto", to: "pt"});
+    const text = req.body.text;
+    const target = req.body.target;
+
+    const translation = await translate(text, {from: "auto", to: target});
     
     res.json(translation);
 }
