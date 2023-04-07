@@ -193,7 +193,7 @@ export default function ImageGenerator(){
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <h1 className={styles.title}>퍼플리아 이미지 코드 대량 제작</h1>
+                <h1 className={styles.title}>이미지 코드 대량 제작</h1>
                 <button onClick={addWork}><FaPlus /></button>
             </div>
             <form className={styles.form} onSubmit={generateCode}>
