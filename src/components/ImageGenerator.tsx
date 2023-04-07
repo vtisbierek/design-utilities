@@ -1,6 +1,7 @@
 import styles from "../styles/imageGenerator.module.scss";
 import {ChangeEvent, FormEvent, useState} from "react";
 import ImageSet from "./ImageSet";
+import {FaPlus} from "react-icons/fa";
 
 type WorkSet = {
     key: string;
@@ -67,14 +68,14 @@ export default function ImageGenerator(){
     }
 
     function generateCode(event: FormEvent){
-        event.preventDefault();
+        event.preventDefault();        
 
         if(!validateInputs()){
             setCodeOutput("One or more inputs are inconsistent. Please check and try again.");
         } else {
             let output = "";
 
-            work.map(entry => {
+            work2.map(entry => {
                 if (entry.imageNo1 === ""){
                     if(Number(entry.imageNo2) < 10) {
                         output = output + `<img src="${entry.endpoint}ujh${entry.date}-${entry.productNo}-${entry.item}-0${entry.imageNo2}.jpg" alt="${entry.productName}"><br>\n`;
@@ -128,7 +129,6 @@ export default function ImageGenerator(){
         setElementKey(newKey);
         const newWork = [...work, newEntry];
         setWork(newWork);
-
         setWork2(newWork);
     }
 
@@ -188,25 +188,37 @@ export default function ImageGenerator(){
         setWork(newWork);
     }
 
+    function deleteWork(event: React.MouseEvent<HTMLButtonElement>){
+        const button: HTMLButtonElement = event.currentTarget;
+        const newWork = work.filter(item => item.key !== button.dataset.id);
+        setWork(newWork); 
+        setWork2(newWork);
+    }
+
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>퍼플리아 이미지 코드 대량 제작</h1>
-            <button onClick={addWork}>Add</button>
+            <div className={styles.header}>
+                <h1 className={styles.title}>퍼플리아 이미지 코드 대량 제작</h1>
+                <button onClick={addWork}><FaPlus /></button>
+            </div>
             <form className={styles.form} onSubmit={generateCode}>
                 {work2.map(item => (
-                    <ImageSet 
-                        key={item.key}
-                        elementId={item.key}
-                        onDate={handleDate}
-                        onProdNo={handleProductNo}
-                        onItem={handleItem}
-                        onImg1={handleImgNo1}
-                        onImg2={handleImgNo2}
-                        onProdName={handleProductName}
-                        onEndpoint={handleEndpoint}
-                    />
+                    <div className={styles.workItem} key={item.key}>
+                        <ImageSet 
+                            key={item.key}
+                            elementId={item.key}
+                            onDate={handleDate}
+                            onProdNo={handleProductNo}
+                            onItem={handleItem}
+                            onImg1={handleImgNo1}
+                            onImg2={handleImgNo2}
+                            onProdName={handleProductName}
+                            onEndpoint={handleEndpoint}
+                        />
+                        <button type="button" data-id={item.key} onClick={deleteWork} className={styles.deleteButton}>Delete</button>
+                    </div>
                 ))}
-                <button type="submit">Generate</button>
+                <button type="submit" className={styles.generateButton}>Generate</button>
             </form>
             <div className={styles.result}>
                 <textarea className={styles.textArea} disabled value={codeOutput}></textarea>
