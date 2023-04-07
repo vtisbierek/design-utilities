@@ -39,32 +39,27 @@ export default function ImageGenerator(){
     const [codeOutput, setCodeOutput] = useState("");
 
     function validateInputs(){
-        const isValid = work.map(entry => {
+        let isValid = true;
+        work2.forEach(entry => {
             if(entry.date === "" || entry.productNo === "" || entry.item === "" || entry.productName === "" || entry.endpoint === "") {
-                return false;
+                isValid = false;
             } else if(entry.imageNo1 === "" && entry.imageNo2 === ""){ 
-                return false;
+                isValid = false;
             } else if(entry.imageNo1 === ""){
                 if(!isNumeric(entry.imageNo2)){
-                    return false;
-                } else {
-                    return true;
+                    isValid = false;
                 }
             } else if(entry.imageNo2 === ""){
                 if(!isNumeric(entry.imageNo1)){
-                    return false;
-                } else {
-                    return true;
+                    isValid = false;
                 }
             } else if(!isNumeric(entry.imageNo1) || !isNumeric(entry.imageNo2)){
-                return false;
+                isValid = false;
             } else if(Number(entry.imageNo1) > Number(entry.imageNo2)) {
-                return false;
-            } else{
-                return true;
-            }
+                isValid = false;
+            } 
         });
-        return isValid[0];
+        return isValid;
     }
 
     function generateCode(event: FormEvent){
