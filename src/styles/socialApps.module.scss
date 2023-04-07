@@ -11,6 +11,11 @@
         width: 60px;
         border-radius: 10px;
         margin: 10px;
+        transition: all 0.3s;
+
+        &:hover{
+            transform: scale(1.09);
+        }
     }
 
     h1{
